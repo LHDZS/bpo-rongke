@@ -12,6 +12,8 @@ import Signing from '@/pages/contract/signing.vue'
 import RepairOrder from '@/pages/trading/repairOrder.vue'
 // 签约
 import Trading from '@/pages/trading/trading.vue'
+// 协议
+import Agreement from '@/pages/agreement/agreement.vue'
 
 export default new Router({
   routes: [
@@ -20,6 +22,7 @@ export default new Router({
     { path: '/taskCenter/release', name: 'release', component: Release },
     { path: '/contract/signing', name: 'signing', component: Signing },
     { path: '/trading/repairOrder', name: 'repairOrder', component: RepairOrder },
-    { path: '/trading/trading', name: 'trading', component: Trading }
+    { path: '/trading/trading', name: 'trading', component: Trading },
+    { path: '/agreement/agreement', name: 'agreement', component: Agreement }
   ]
 })

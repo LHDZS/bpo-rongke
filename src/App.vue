@@ -20,13 +20,14 @@ export default {
   data () {
     return {
       activeIndex: '/taskCenter/delivery',
-      navWhiteList:['login','home'],
+      navWhiteList:['login','home','agreement'],
       navigationBarType: false,
       navigationBarLeftType: true
     }
   },
   watch: {
     $route(to, from) {
+      window.scrollTo(0,0);
       console.log('????????????',to,from)
       if (to.name == null) {
         this.$router.push({path: '/'})
