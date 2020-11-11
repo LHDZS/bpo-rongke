@@ -1,23 +1,185 @@
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="less" scoped>
+.navigationBar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  .header {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.36);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    li {
+      list-style-type: none;
+    }
+    a {
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .auto {
+      margin: 0 4.166%;
+      .logo {
+        width: 22.133%;
+        line-height: 42px;
+        float: left;
+        padding: 22px 0px;
+        img {
+          display: inline-block;
+          vertical-align: middle;
+          // width: 100%;
+        }
+      }
+      .menu {
+        width: 70%;
+        float: right;
+        position: relative;
+        .lists {
+          margin: 26px 15px 26px 0;
+          .list {
+            float: left;
+            position: relative;
+            width: 12.285%;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.2s linear;
+            -webkit-transition: all 0.2s linear;
+            .am {
+              display: block;
+              font-size: 16px;
+              line-height: 32px;
+              color: #fff;
+              border-radius: 25px;
+              text-decoration: none;
+              transition: all 0.2s linear;
+              -webkit-transition: all 0.2s linear;
+            }
+            .subNav {
+              position: absolute;
+              left: 50%;
+              top: 100%;
+              z-index: 999;
+              width: 140px;
+              margin-left: -70px;
+              display: none;
+              padding-top: 25px;
+              .box {
+                position: relative;
+                padding: 10px 0;
+                background: #fff;
+                border-top: 4px solid #2d6dc1;
+                b {
+                  position: absolute;
+                  top: -14px;
+                  left: 50%;
+                  margin-left: -7px;
+                  border-style: solid;
+                  border-width: 0 7.5px 10px 7.5px;
+                  border-color: transparent transparent #2d6dc1 transparent;
+                }
+                span {
+                  display: block;
+                  line-height: 32px;
+                  font-size: 14px;
+                  color: #333;
+                  text-align: center;
+                }
+                span:hover {
+                  cursor: pointer;
+                  color: #59c47f;
+                }
+              }
+            }
+          }
+          .list:hover .am {
+            background: #2d6dc1;
+            color: #fff;
+          }
+          .list:hover .subNav {
+            display: block;
+          }
+        }
+      }
+      .but {
+        display: none;
+        float: right;
+        height: 86px;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
+    @media (max-width: 1080px) {
+      .auto {
+        margin: 0 15px;
+        .menu {
+          display: none;
+        }
+        .but {
+          display: flex;
+        }
+      }
+    }
+  }
+  .clear {
+    clear: both;
+  }
+}
+.navDetails {
+  position: static !important;
+  .header {
+    background: #fff !important;
+    .auto .menu .lists .list .am {
+      color: #333333;
+    }
+  }
+}
+</style>
+
 <template>
-  <div class="navigationBar">
-    <div class="title">薪必果</div>
-    <div class="menu">
-      <!-- <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-        <el-menu-item v-for="(item,key) in menuArr" :key="key" :index="item.path">{{item.name}}</el-menu-item>
-      </el-menu> -->
+  <!-- 头部导航 -->
+  <div :class="type ? 'navigationBar navDetails' : 'navigationBar'">
+    <div class="header">
+      <div class="auto">
+        <div class="logo">
+          <img :src="type ? logo1 : logo" alt="" />
+          <!-- <img src="https://www.zcent.com/uploadfiles/2020/10/20201015152518020.png?56e75Yqo56uvX+eUu+advyAxLnBuZw==" alt=""> -->
+        </div>
+        <div class="menu">
+          <ul class="lists">
+            <li class="list" v-for="(item, key) in menuArr" :key="key">
+              <a class="am" @click="jump(item)">{{ item.name }}</a>
+              <div class="subNav" v-if="item.menuNav">
+                <div class="box">
+                  <b></b>
+                  <span v-for="(list,index) in item.menuNav" :key="index" @click="jump(list)">{{list.name}}</span>
+                </div>
+              </div>
+            </li>
+            <div class="clear"></div>
+          </ul>
+        </div>
+        <div class="but">
+          <i
+            class="el-icon-s-fold"
+            @click="drawer = true"
+            style="font-size: 30px; color: #fff"
+          ></i>
+        </div>
+        <div class="clear"></div>
+      </div>
     </div>
-    <div class="my">
-      <el-dropdown @command="menuTrigger">
-        <span class="el-dropdown-link">
-          <i class="el-icon-user el-icon--right"></i>&nbsp;&nbsp;{{loginPhone}}
-        </span>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="a">个人中心</el-dropdown-item>
-          <el-dropdown-item command="/login">退出</el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
-    </div>
+    <!-- 右侧导航栏 -->
+    <el-drawer
+      title="我是标题"
+      :visible.sync="drawer"
+      direction="rtl"
+      :before-close="handleClose"
+    >
+      <span>我来啦!</span>
+    </el-drawer>
   </div>
+  
 </template>
 
 <script>
@@ -26,142 +188,84 @@ export default {
   name: 'navigationBar',
   data () {
     return {
-      activeIndex: '/',
-      loginPhone: '',
+      type: false,
+      drawer: false,
+      logo1: require("../assets/icon/rock1.png"),
+      logo: require("../assets/icon/ROCK.png"),
       menuArr: [
         {
-          name: '首页',
-          path: '/',
-          submenu:[]
-          
-        },{
-          name: '商户中心',
-          path: '/merchants',
-          submenu: [
-            {name: '客户管理', team:[{name:'商户信息',path:'/merchants/businessInformation'},{name:'签约信息',path:'/merchants/contractInformation'},{name:'地址信息',path:'/merchants/addressInformation'},{name:'抬头信息',path:'/merchants/lookUpInformation'}]}
+          name: "首页",
+          path: 'home'
+        },
+        {
+          name: "产品服务",
+        },
+        {
+          name: "解决方案",
+        },
+        {
+          name: "合伙人招募",
+          path: 'partnerRecruit'
+        },
+        {
+          name: "政策资讯",
+          menuNav: [
+            {
+              name: '政策解读',
+              path: 'policyMessage'
+            },
+            {
+              name: '行业动态',
+              path: 'policyMessage'
+            }
           ]
-        },{
-          name: '业务中心',
-          path: '/trading',
-          submenu: [
-            {name: '订单管理', team:[{name:'订单信息',path:'/trading/orderInformation'}]},
-            {name: '个体户管理', team:[{name:'用户信息',path:'/trading/userInformation'},{name:'用户签约',path:'/trading/usersSignUp'}]},
-            {name: '发票管理', team:[{name:'发票申请',path:'/trading/invoiceApplyFor'},{name:'发票管理',path:'/trading/invoiceManagement'}]}
-          ]
-        },{
-          name: '财务中心',
-          path: '/financial',
-          submenu: [
-            {name: '资金管理', team:[{name:'资金账户',path:'/financial/capitalAccount'},{name:'充值申请',path:'/financial/topUpApplication'},{name:'资金交易',path:'/financial/cashTransactions'},{name:'资金流水',path:'/financial/capitalFlows'}]},
-          ]
-        },{
-          name: '数据中心',
-          path: '/information',
-          submenu: [
-            {name: '暂无', team:[{name:'暂无',path:''}]}
-          ]
-        },{
-          name: '系统中心',
-          path: '/system',
-          submenu: [
-            {name: '信息维护', team:[{name:'注册地信息',path:'/system/registered'},{name:'经营范围信息',path:'/system/businessScope'},{name:'交付商信息',path:'/system/delivery'},{name:'发票内容信息',path:'/system/invoiceContent'}]}
-          ]
-        }
-      ]
+        },
+        {
+          name: "关于我们",
+          path: 'aboutus'
+        },
+      ],
     }
   },
-   computed: {
-  // 我们使用计算属性来获取到当前点击的菜单的路由路径，然后设置default-active中的值
-  // 使得菜单在载入时就能对应高亮
-    activeMenu() {
-      const route = this.$route
-      const { meta, path } = route
-      // if set path, the sidebar will highlight the path you set
-      // 可以在路由配置文件中设置自定义的路由路径到meta.activeMenu属性中，来控制菜单自定义高亮显示
-      if (meta.activeMenu) {
-        return meta.activeMenu
+  watch: {
+    $route(to, from) {
+      // console.log(to, from, '路由')
+      if (to.meta.type == 'det') {
+        this.type = true
+      }else {
+        this.type = false
       }
-      return path
     }
+  },
+  computed: {
+  
   },
   props:{
-    // menuArr:Array
+
   },
   methods: {
-    handleSelect(key, keyPath) {
-      console.log(key,keyPath, '菜单点击事件')
-      for (let i = 0; i < this.menuArr.length; i++) {
-        if (key == this.menuArr[i].path) {
-          this.$emit('handleSelect',key,this.menuArr[i].submenu)
-        }
+    jump(row) {
+      if (this.$route.name == row.path) {
+        return
+      }
+      let url = row.path;
+      if (url) {
+        this.$router.push({name: url,query:{name: row.name}})
       }
     },
-    menuTrigger(command) {
-      // console.log('?????????',command)
-      if (command == '/login') {
-        sessionStorage.removeItem('sid');
-        this.$router.push({path: '/login'})
-      }
+    handleClose(done) {
+      done();
     }
   },
   mounted() {
 
   },
   created() {
-    this.loginPhone = localStorage.getItem('loginPhone') || '上海韵达货运有限公司';
-    this.activeIndex = '/' + this.$router.history.current.path.split('/')[1]
-    for (let i = 0; i < this.menuArr.length; i++) {
-      if (this.activeIndex == this.menuArr[i].path) {
-        this.$emit('handleSelect','',this.menuArr[i].submenu)
-      }
+    if (this.$route.meta.type == 'det') {
+      this.type = true
+    }else {
+      this.type = false
     }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="less" scoped>
-.navigationBar {
-  width: 100%;
-  height:58px;
-  background-color: #fff;
-  .title {
-    float: left;
-    width:182px;
-    height:100%;
-    line-height: 58px;
-    text-align: center;
-    background:#002140;
-    font-size:18px;
-    font-family:PingFangSC;
-    font-weight:400;
-    color:rgba(255,255,255,1);
-  }
-  .menu {
-    float: left;
-    height: 100%;
-    padding-left: 50px;
-  }
-  .my {
-    float: right;
-    height: 100%;
-    line-height: 58px;
-    margin-right: 50px;
-    font-size:14px;
-    font-family:PingFangSC;
-    font-weight:400;
-    color:rgba(51,51,51,1);
-  }
-}
-</style>
-
-<style>
-.navigationBar .el-menu--horizontal>.el-menu-item {
-  width: 130px;
-  height: 58px;
-  line-height: 58px;
-}
-.navigationBar .el-menu.el-menu--horizontal {
-  border-bottom: none;
-}
-</style>

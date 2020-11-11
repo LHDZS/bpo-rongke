@@ -2,87 +2,13 @@
 <style lang="less" scoped>
 .home {
   width: 100%;
-  height: 100%;
+  // height: 100%;
   li {
     list-style-type: none;
   }
   a {
     cursor: pointer;
     text-decoration: none;
-  }
-  .header {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.36);
-    z-index: 99;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    .auto {
-      margin: 0 4.166%;
-      overflow: hidden;
-      .logo {
-        width: 22.133%;
-        line-height: 42px;
-        float: left;
-        padding: 22px 0px;
-        img {
-          display: inline-block;
-          vertical-align: middle;
-          // width: 100%;
-        }
-      }
-      .menu {
-        width: 70%;
-        float: right;
-        position: relative;
-        .lists {
-          margin: 26px 150px 26px 0;
-          overflow: hidden;
-          .list {
-            float: left;
-            position: relative;
-            width: 12.285%;
-            text-align: center;
-            text-decoration: none;
-            transition: all 0.2s linear;
-            -webkit-transition: all 0.2s linear;
-            .am {
-              display: block;
-              font-size: 16px;
-              line-height: 32px;
-              color: #fff;
-              border-radius: 25px;
-              text-decoration: none;
-              transition: all 0.2s linear;
-              -webkit-transition: all 0.2s linear;
-            }
-          }
-          .list:hover .am {
-            background: #2d6dc1;
-          }
-        }
-      }
-      .but {
-        display: none;
-        float: right;
-        height: 86px;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-      }
-    }
-    @media (max-width: 1360px) {
-      .auto {
-        margin: 0 15px;
-        .menu {
-          display: none;
-        }
-        .but {
-          display: flex;
-        }
-      }
-    }
   }
   .nav {
     width: 100%;
@@ -253,7 +179,7 @@
         zoom: 1;
         overflow: hidden;
         span {
-          background: url("https://gsb-zc.oss-cn-beijing.aliyuncs.com//zc_37591603856122715202028113522715leftImg.png");
+          background: url("../../assets/img/leftImg.png");
           background-repeat: no-repeat;
           background-size: cover;
           background-position: center center;
@@ -572,141 +498,6 @@
       }
     }
   }
-  .footerbar {
-    width: 100%;
-    background: #22272b;
-    padding: 80px 0 35px;
-    box-sizing: border-box;
-    .w1600 {
-      max-width: 1600px;
-      min-width: 320px;
-      margin: 0px auto;
-      .service {
-        margin-bottom: 3%;
-        .flogo {
-          text-align: left;
-          float: left;
-          padding-right: 5%;
-          margin-right: 5%;
-        }
-        @media (max-width: 1640px) {
-          .flogo {
-            width: 100%;
-            margin-bottom: 35px;
-            padding-right: 0;
-            margin-right: 0;
-          }
-        }
-        .left {
-          width: 15%;
-          float: left;
-          padding-right: 5%;
-          margin-right: 5%;
-          text-align: left;
-          dt {
-            margin-bottom: 30px;
-            span {
-              font-size: 18px;
-              font-family: PingFangSC-Regular, PingFang SC;
-              font-weight: 400;
-              color: #ffffff;
-              line-height: 25px;
-            }
-          }
-          dd {
-            margin-bottom: 15px;
-            margin-left: 0px;
-            a {
-              font-size: 14px;
-              font-family: PingFangSC-Regular, PingFang SC;
-              font-weight: 400;
-              color: #ffffff;
-              line-height: 20px;
-            }
-          }
-        }
-        .centre {
-          width: 20%;
-          float: left;
-          padding-right: 5%;
-          margin-right: 5%;
-          text-align: left;
-          dt {
-            margin-bottom: 30px;
-            span {
-              font-size: 18px;
-              font-family: PingFangSC-Regular, PingFang SC;
-              font-weight: 400;
-              color: #ffffff;
-              line-height: 25px;
-            }
-          }
-          dd {
-            margin-bottom: 15px;
-            margin-left: 0px;
-            span {
-              font-size: 14px;
-              font-family: PingFangSC-Regular, PingFang SC;
-              font-weight: 400;
-              color: #ffffff;
-              line-height: 20px;
-            }
-          }
-        }
-        .right {
-          width: 10%;
-          min-width: 138px;
-          float: right;
-          dl {
-            img {
-              width: 138px;
-              border: 1px solid #fff;
-            }
-            p {
-              color: #fff;
-            }
-          }
-        }
-      }
-      .servicelink {
-        color: #fff;
-        text-align: left;
-        // padding-top: 15px;
-        // border-top: 1px solid #4e5255;
-        h3 {
-          font-size: 16px;
-          margin-bottom: 10px;
-        }
-        .con {
-          font-weight: 100;
-          a {
-            color: #fff;
-          }
-          i {
-            padding: 0 18px;
-          }
-        }
-      }
-    }
-  }
-  @media (max-width: 1640px) {
-    .footerbar {
-      padding: 80px 5% 35px;
-    }
-  }
-  .copyright {
-    background: #22272b;
-    border-top: 1px solid #4e5255;
-    padding: 16px 0;
-    color: #ddd;
-    font-weight: normal;
-    text-align: center;
-    .w1600 {
-      max-width: 1600px;
-      min-width: 320px;
-      margin: 0px auto;
-    }
-  }
   .clear {
     clear: both;
   }
@@ -715,29 +506,7 @@
 
 <template>
   <div class="home">
-    <!-- 头部导航 -->
-    <div class="header">
-      <div class="auto">
-        <div class="logo">
-          <img :src="logo" alt="" />
-          <!-- <img src="https://www.zcent.com/uploadfiles/2020/10/20201015152518020.png?56e75Yqo56uvX+eUu+advyAxLnBuZw==" alt=""> -->
-        </div>
-        <div class="menu">
-          <ul class="lists">
-            <li class="list" v-for="(item, key) in menuArr" :key="key">
-              <a class="am" @click="jump()">{{ item.name }}</a>
-            </li>
-          </ul>
-        </div>
-        <div class="but">
-          <i
-            class="el-icon-s-fold"
-            @click="drawer = true"
-            style="font-size: 30px; color: #fff"
-          ></i>
-        </div>
-      </div>
-    </div>
+    
     <!-- 轮播图 -->
     <div class="nav">
       <el-carousel indicator-position="outside" height="570px">
@@ -750,8 +519,8 @@
     <div class="lbox3">
       <div class="w1600">
         <div class="title">
-          <span>我们能为你做什么？</span>
-          <p>打造数字化共享用工平台，降低企业成本，增加就业收入</p>
+          <span>我们能为您做什么？</span>
+          <p>通过数字化共享用工平台，降低企业成本、增加就业收入</p>
         </div>
         <div class="leftImg">
           <span></span>
@@ -889,73 +658,13 @@
         <p>核心服务城市</p>
       </div>
     </div>
-    <!-- 底栏 -->
-    <div class="footerbar">
-      <div class="w1600">
-        <div class="service">
-          <div class="flogo"><img :src="logo" /></div>
-          <div class="left">
-            <dl>
-              <dt><span>融科</span></dt>
-              <dd>
-                <a @click="jump('/agreement/agreement')" target="_blank"
-                  >隐私声明</a
-                >
-              </dd>
-              <dd><a @click="jump()" target="_blank">关于我们</a></dd>
-            </dl>
-          </div>
-          <div class="centre">
-            <dl>
-              <dt><span>联系我们</span></dt>
-              <dd><span>电话：400-86678997</span></dd>
-              <dd><span>邮箱：kefu@rongke.com</span></dd>
-              <dd><span>地址：北京市朝阳区国创产业园6号楼</span></dd>
-              <dd><span>工作时间：9：00 - 18：00</span></dd>
-            </dl>
-          </div>
-          <div class="right">
-            <dl>
-              <img :src="qrCode" alt="" />
-              <p>薪必果APP</p>
-            </dl>
-          </div>
-          <div class="clear"></div>
-        </div>
-        <div class="servicelink">
-          <h3>友情链接</h3>
-          <div class="con">
-            <a @click="jump('https://www.gongsibao.com/')">公司宝</a>
-            <i>|</i>
-            <a @click="jump('http://www.sinotone.net/')">汉唐咨询</a>
-            <i>|</i>
-            <a @click="jump('http://pku.pkusp.com.cn/')">北大科技园</a>
-            <i>|</i>
-            <a @click="jump('https://www.jdcloud.com/cn/')">京东云</a>
-            <i>|</i>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ICP -->
-    <div class="copyright">
-      <div class="w1600">版权所有©汉唐融科（北京）有限公司</div>
-    </div>
-    <!-- 右侧导航栏 -->
-    <el-drawer
-      title="我是标题"
-      :visible.sync="drawer"
-      direction="rtl"
-      :before-close="handleClose"
-    >
-      <span>我来啦!</span>
-    </el-drawer>
+    
   </div>
 </template>
 
 <script>
 // import odoo from '../../lib/odoo.js'
+import {post} from '../../api/index'
 
 export default {
   data() {
@@ -964,38 +673,16 @@ export default {
       value1: 0,
       value2: 0,
       value3: 0,
-      qrCode: require("../../assets/icon/wm.png"),
-      logo: require("../../assets/icon/logo.png"),
       liKey: 0,
+      leftImg: require("../../assets/img/leftImg.png"),
       offIcon: require("../../assets/icon/dui.png"),
       onIcon: require("../../assets/icon/duif.png"),
       odooType: true,
-      drawer: false,
       bannerArr: [
         require("../../assets/img/banner.png"),
         require("../../assets/img/banner2.png"),
         require("../../assets/img/banner3.png"),
-      ],
-      menuArr: [
-        {
-          name: "首页",
-        },
-        {
-          name: "产品服务",
-        },
-        {
-          name: "解决方案",
-        },
-        {
-          name: "合伙人招募",
-        },
-        {
-          name: "政策资讯",
-        },
-        {
-          name: "关于我们",
-        },
-      ],
+      ], 
       boxArr4_5: [
         {
           name: "电商行业",
@@ -1080,7 +767,7 @@ export default {
             "https://gsb-zc.oss-cn-beijing.aliyuncs.com//zc_8791603853188114202028104628114rk.png",
           name: "融科学堂",
           texts: [
-            "提升自由者专业技能知识",
+            "提升自由职业者专业技能",
             "创造不一样的未来和发展",
             "自我赋能增强职场竞争力",
             "实现岗位薪酬待遇的提升",
@@ -1093,10 +780,10 @@ export default {
             "https://gsb-zc.oss-cn-beijing.aliyuncs.com//zc_20291603853202752202028104642752zz.png",
           name: "增值服务",
           texts: [
-            "合法合规合理的税收筹划",
-            "有效节省企业经营的成本",
+            "合法合规合理的税务筹划",
+            "有效节约企业经营的成本",
             "严格按政策设计税筹方案",
-            "确保税务链条的六流合一",
+            "确保税务链条的四流合一",
           ],
         },
       ],
@@ -1104,27 +791,27 @@ export default {
         {
           icon: require("../../assets/icon/ic1.png"),
           name: "合法合规",
-          text: "拥有委托代征 人力资源等国家颁发资质",
+          text: "拥有政府颁发的委托代征 人力资源等资质",
         },
         {
           icon: require("../../assets/icon/ic2.png"),
           name: "研发能力",
-          text: "自研共享平台 为灵活就业提供一站式服务",
+          text: "自研共享用工一站式服务平台 满足灵活就业需求",
         },
         {
           icon: require("../../assets/icon/ic3.png"),
           name: "专业能力",
-          text: "顶级人力专家、 税务师、律师组成专家团队",
+          text: "人力资源师、税务师、律师等 组成专家管理团队",
         },
         {
           icon: require("../../assets/icon/ic4.png"),
           name: "交付能力",
-          text: "专业系统支撑 后续服务确保客户满意",
+          text: "专业系统支撑后续服务 确保客户满意",
         },
         {
           icon: require("../../assets/icon/ic5.png"),
           name: "强大背书",
-          text: "用友·创业黑马 两大公司背书资金风险低",
+          text: "用友、创业黑马、58资本、蔚来资本 上市公司背书",
         },
       ],
     };
@@ -1172,9 +859,6 @@ export default {
     mouseOver(key) {
       this.liKey = key;
     },
-    handleClose(done) {
-      done();
-    },
     handleScrollx() {
       // console.log(!this.$refs.numberGrow)
       if (!this.$refs.numberGrow || !this.$refs.numberGrow1 || !this.$refs.numberGrow2 || !this.$refs.numberGrow3) {
@@ -1184,7 +868,7 @@ export default {
         this.odooType = false;
         setTimeout(() => {
           this.numberGrow(this.$refs.numberGrow, 15, "年");
-          this.numberGrow(this.$refs.numberGrow1, 200, "万+");
+          this.numberGrow(this.$refs.numberGrow1, 20, "万+");
           this.numberGrow(this.$refs.numberGrow2, 500, "位+");
           this.numberGrow(this.$refs.numberGrow3, 300, "个+");
         },500)

@@ -1,19 +1,22 @@
 <template>
-  <div id="app" v-if="navigationBarType">
+  <!-- <div id="app" v-if="navigationBarType">
     <navigationBar></navigationBar>
     <navigationBarLeft v-if="navigationBarLeftType" :activeIndex="activeIndex"></navigationBarLeft>
     <div :class="navigationBarLeftType ? 'main' : 'appMain'">
       <router-view/>
     </div>
-  </div>
-  <div id="appNo" v-else>
+  </div> -->
+  <div id="appNo">
+    <navigationBar></navigationBar>
     <router-view/>
+    <footerbar></footerbar>
   </div>
 </template>
 
 <script>
 import navigationBar from '@/components/navigationBar'
 import navigationBarLeft from '@/components/navigationBarLeft'
+import footerbar from '@/components/footerbar'
 
 export default {
   name: 'App',
@@ -28,7 +31,7 @@ export default {
   watch: {
     $route(to, from) {
       window.scrollTo(0,0);
-      console.log('????????????',to,from)
+      // console.log('????????????',to,from)
       if (to.name == null) {
         this.$router.push({path: '/'})
       }
@@ -49,7 +52,8 @@ export default {
   },
   components: {
     navigationBar: navigationBar,
-    navigationBarLeft: navigationBarLeft
+    navigationBarLeft: navigationBarLeft,
+    footerbar: footerbar
   }
 }
 </script>
@@ -82,12 +86,13 @@ export default {
 }
 #appNo {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  
 }
 </style>
 

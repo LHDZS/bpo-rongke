@@ -2,27 +2,26 @@ import Vue from 'vue'	//引入vue
 import Router from 'vue-router'
 Vue.use(Router)
 import Home from '@/pages/home/index.vue'
-// 投递
-import Delivery from '@/pages/taskCenter/delivery.vue'
-// 发布
-import Release from '@/pages/taskCenter/release.vue'
-// 签约
-import Signing from '@/pages/contract/signing.vue'
-// 发布
-import RepairOrder from '@/pages/trading/repairOrder.vue'
-// 签约
-import Trading from '@/pages/trading/trading.vue'
 // 协议
 import Agreement from '@/pages/agreement/agreement.vue'
+// 关于我们
+import Aboutus from '@/pages/aboutus/aboutus.vue'
+// 政策解读
+import PolicyMessage from '@/pages/policyMessage/policyMessage.vue'
+// 合伙人招募
+import PartnerRecruit from '@/pages/partnerRecruit/partnerRecruit.vue'
+// 文章详情
+import ArticleDetails from '@/pages/articleDetails/articleDetails.vue'
+
+
 
 export default new Router({
   routes: [
     { path: '/', name: 'home', component: Home },
-    { path: '/taskCenter/delivery', name: 'delivery', component: Delivery },
-    { path: '/taskCenter/release', name: 'release', component: Release },
-    { path: '/contract/signing', name: 'signing', component: Signing },
-    { path: '/trading/repairOrder', name: 'repairOrder', component: RepairOrder },
-    { path: '/trading/trading', name: 'trading', component: Trading },
-    { path: '/agreement/agreement', name: 'agreement', component: Agreement }
+    { path: '/agreement', name: 'agreement', component: Agreement },
+    { path: '/aboutus', name: 'aboutus', component: Aboutus },
+    { path: '/policyMessage', name: 'policyMessage', component: PolicyMessage },
+    { path: '/partnerRecruit', name: 'partnerRecruit', component: PartnerRecruit },
+    { path: '/articleDetails', name: 'articleDetails', meta: {type: 'det'}, component: ArticleDetails }
   ]
 })

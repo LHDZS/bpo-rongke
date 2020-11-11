@@ -39,6 +39,6 @@ export default {
 .bottom-pag {
     width: 100%;
     margin-top: 20px;
-    text-align: right;
+    // text-align: right;
 }
 </style>
